@@ -17,6 +17,7 @@ class BaseViewController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBar.isHidden = true
         setTabbar()
     }
     
@@ -25,7 +26,7 @@ class BaseViewController: UITabBarController {
     }
 
     func setTabbar() {
-        customTabbar = RRTabbar.init(frame: self.tabBar.bounds)
+        customTabbar = RRTabbar.init(frame: CGRect.init(x: 0, y: self.view.frame.size.height - 49, width: self.view.frame.size.width, height: 49))
         let one = OneViewController()
         let two = TwoViewController()
         let three = ThreeViewController()
@@ -56,7 +57,7 @@ class BaseViewController: UITabBarController {
         customTabbar.clickBlock = {(selected:Int) in
             self.selectedIndex = selected
         }
-        self.tabBar.addSubview(customTabbar)
+        self.view.addSubview(customTabbar)
     }
     
     override func didReceiveMemoryWarning() {

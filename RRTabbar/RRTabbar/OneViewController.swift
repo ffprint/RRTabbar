@@ -10,11 +10,21 @@ import UIKit
 
 class OneViewController: UIViewController {
 
+    var isHiden:Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "哈哈"
 
         // Do any additional setup after loading the view.
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !isHiden {
+            (self.navigationController?.tabBarController as! BaseViewController).customTabbar.hide()
+        }else {
+            (self.navigationController?.tabBarController as! BaseViewController).customTabbar.show()
+        }
+        isHiden = !isHiden
     }
 
     override func didReceiveMemoryWarning() {

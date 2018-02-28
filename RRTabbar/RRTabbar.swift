@@ -93,6 +93,17 @@ class RRTabbar: UIView {
         self.clipsToBounds = false
     }
     
+    func hide() {
+        UIView.animate(withDuration: 0.3) {
+            self.frame = CGRect.init(x: 0, y: HEIGHT, width: self.frame.size.width, height: self.frame.size.height)
+        }
+    }
+    func show() {
+        UIView.animate(withDuration: 0.3) {
+            self.frame = CGRect.init(x: 0, y: HEIGHT-49, width: self.frame.size.width, height: self.frame.size.height)
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
